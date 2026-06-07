@@ -1,0 +1,5 @@
+outs:
+- md5: 55bd6cc42f2360b5de9569cf9cbd8342
+  size: 7726618
+  hash: md5
+  path: swiggy.csv
