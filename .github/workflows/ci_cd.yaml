@@ -6,13 +6,15 @@ jobs:
   CI-CD:
     runs-on: ubuntu-latest
     
-    # 1. Define all environment variables here so every step can use them
     env:
       MLFLOW_TRACKING_USERNAME: saabiqcs
+      # MLflow requires your token to be passed as the password
+      MLFLOW_TRACKING_PASSWORD: ${{ secrets.DAGSHUB_TOKEN }}
+      # DagsHub Python client requires this specific token variable
+      DAGSHUB_USER_TOKEN: ${{ secrets.DAGSHUB_TOKEN }}
+      
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      DAGSHUB_TOKEN: ${{ secrets.DAGSHUB_TOKEN }}
-      MLFLOW_TRACKING_TOKEN: ${{ secrets.DAGSHUB_TOKEN }}
 
     steps:
       - name: Code Checkout
@@ -21,7 +23,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.13.13' 
+          python-version: '3.11' # Use a stable version like 3.11 instead of 3.13.13
           cache: 'pip' 
 
       - name: Install Packages
@@ -31,7 +33,6 @@ jobs:
 
       - name: DVC Pull (S3 remote)
         run: |
-          # AWS credentials are required to pull from an S3 bucket
           dvc remote modify myremote --local access_key_id "${AWS_ACCESS_KEY_ID}"
           dvc remote modify myremote --local secret_access_key "${AWS_SECRET_ACCESS_KEY}"
           dvc pull -r myremote || echo "Some files are missing in DVC remote!"
