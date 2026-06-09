@@ -10,7 +10,7 @@ import json
 
 
 # initialize dagshub
-import dagshub
+
 dagshub.init(repo_owner='saabiqcs', repo_name='swiggy-time-prediction', mlflow=True)
 
 # set the tracking server
