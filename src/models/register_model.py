@@ -58,22 +58,7 @@ if __name__ == "__main__":
     if experiment is None:
         raise MlflowException("Could not find experiment 'DVC Pipeline'")
 
-    logged_models = client.search_logged_models([experiment.experiment_id])
-    logged_model = next(
-        (
-            model
-            for model in logged_models
-            if model.source_run_id == run_id and model.name == model_name
-        ),
-        None,
-    )
-
-    if logged_model is None:
-        raise MlflowException(
-            f"Could not find a logged model for run {run_id} and model {model_name}"
-        )
-
-    model_source = logged_model.model_uri
+    model_source = f"runs:/{run_id}/delivery_time_pred_model"
     
     try:
         client.create_registered_model(model_name)
