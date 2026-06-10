@@ -16,23 +16,23 @@ def load_model_information(file_path):
     return run_info
 
 # set model name
-model_name = load_model_information("run_information.json")["model_name"]
+run_info = load_model_information("run_information.json")
+model_name = run_info["model_name"]
+run_id = run_info["run_id"]
 
 
 
-@pytest.mark.parametrize(argnames="model_name, stage",
-                         argvalues=[(model_name, "Staging")])
-def test_load_model_from_registry(model_name,stage):
+def test_load_model_from_registry():
     client = MlflowClient()
-    latest_versions = client.get_latest_versions(name=model_name,stages=[stage])
+    latest_versions = client.search_model_versions(f"name='{model_name}'")
     latest_version = latest_versions[0].version if latest_versions else None
-    
-    assert latest_version is not None, f"No model at {stage} stage"
-    
-    # load the model
-    model_path = f"models:/{model_name}/{stage}"
 
-    # load the latest model from model registry
+    assert latest_version is not None, f"No registered model found for {model_name}"
+
+    # load the model logged by the current run
+    model_path = f"runs:/{run_id}/delivery_time_pred_model"
+
+    # load the latest model artifact
     model = mlflow.sklearn.load_model(model_path)
     
     assert model is not None, "Failed to load model from registry"
