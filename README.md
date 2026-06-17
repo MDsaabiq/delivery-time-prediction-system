@@ -19,6 +19,18 @@ Interactive docs at: `http://<ec2-public-ip>/docs`
 
 ---
 
+## Architecture
+
+![Architecture Diagram](assets/architecture.png)
+
+---
+
+## Demo
+
+[![Demo Video](https://github.com/user-attachments/assets/b80a1246-2cff-4526-a8c5-f5264b1ca65a)](https://github.com/user-attachments/assets/b7621f64-e8e5-4409-8734-d422f413aeef)
+
+---
+
 ## Tech Stack
 
 | Area | Tools |
