@@ -53,12 +53,23 @@ I deliberately chose **MAE (Mean Absolute Error)** as the key metric over RMSE/M
 | Metric | Value |
 |---|---|
 | Test MAE | **< 5 minutes** |
-| CV MAE (5-fold) | tracked per run on DagsHub |
+| CV MAE (5-fold) | **3.160 minutes** |
 | Train R² | tracked per run on DagsHub |
 | Test R² | tracked per run on DagsHub |
 
 All metrics, parameters, artifacts and experiment comparisons are tracked on DagsHub:
 👉 https://dagshub.com/saabiqcs/swiggy-time-prediction
+
+### Benchmark vs IBM AutoAI
+
+To validate the model, I ran IBM AutoAI on the same cleaned dataset (`swiggy_cleaned.csv`) with MAE as the optimization metric. Here's how they compare:
+
+| Model | Approach | CV MAE |
+|---|---|---|
+| **Stacking Regressor** (this project) | RF + LGBM → Linear meta-learner, Optuna-tuned, PowerTransformer on target | **3.160 min** |
+| IBM AutoAI best pipeline | Ensemble Snap Random Forest (automated HPO) | 4.9 min |
+
+AutoAI's best pipeline was an automated Snap Random Forest ensemble — it achieved 4.9 min MAE without any manual feature engineering or hyperparameter tuning. The hand-crafted stacking model outperforms it by **~1.7 minutes**, validating that the deliberate model design choices (target transformation, stacking, Optuna tuning) made a meaningful difference over fully automated ML.
 
 ---
 
