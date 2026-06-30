@@ -27,7 +27,7 @@ Interactive docs at: `http://<ec2-public-ip>/docs`
 
 ## Demo
 
-[![Watch Demo](https://img.shields.io/badge/▶%20Watch%20Demo-Click%20Here-red?style=for-the-badge&logo=youtube)](https://MDsaabiq.github.io/delivery-time-prediction-system/demo.html)
+[![Demo Video](https://github.com/user-attachments/assets/b80a1246-2cff-4526-a8c5-f5264b1ca65a)](https://github.com/user-attachments/assets/b7621f64-e8e5-4409-8734-d422f413aeef)
 
 ---
 
