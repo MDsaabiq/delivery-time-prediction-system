@@ -1,4 +1,4 @@
-# Swiggy Food Delivery Time Prediction
+# Food Delivery Time Prediction System
 
 A production-grade, end-to-end machine learning system that predicts food delivery time in minutes. This isn't just a Jupyter notebook — it has a full MLOps stack with experiment tracking, model registry, automated CI/CD, and live cloud deployment on AWS.
 
@@ -27,7 +27,7 @@ Interactive docs at: `http://<ec2-public-ip>/docs`
 
 ## Demo
 
-[![Demo Video](https://github.com/user-attachments/assets/b80a1246-2cff-4526-a8c5-f5264b1ca65a)](https://github.com/user-attachments/assets/b7621f64-e8e5-4409-8734-d422f413aeef)
+[![Demo Video](https://github.com/user-attachments/assets/b80a1246-2cff-4526-a8c5-f5264b1ca65a)](https://saabiqcs.github.io/swiggy-time-prediction/demo.html)
 
 ---
 
@@ -357,3 +357,24 @@ Response: predicted delivery time in minutes (float)
 sk Saabiq — B.Tech Student  
 GitHub: [@saabiqcs](https://github.com/saabiqcs)  
 DagsHub: [saabiqcs/swiggy-time-prediction](https://dagshub.com/saabiqcs/swiggy-time-prediction)
+
+
+
+<!-- Swiggy Food Delivery Time Prediction | Python, Scikit-learn, LightGBM, MLflow, DVC, FastAPI, Docker, AWS
+GitHub | DagsHub
+
+Built an end-to-end ML system predicting food delivery time with < 5 min MAE on test data, deployed live on AWS EC2
+
+Chose MAE over RMSE as the optimization metric — delivery data has natural outliers (traffic, accidents) and MAE treats every minute equally without letting extremes dominate
+
+Engineered features from raw GPS coordinates (Haversine distance), timestamps (pickup time, time of day), and rider IDs (city extraction); handled invalid data like minor-age riders, 6-star ratings, and near-zero GPS coordinates
+
+Ran 8 tracked MLflow experiments on DagsHub — tested drop vs impute strategies, missing indicators, and meta-learner selection before finalizing the model
+
+Tuned Random Forest and LightGBM hyperparameters independently using Optuna (TPE sampler), then stacked them with a Linear Regression meta-learner wrapped inside a TransformedTargetRegressor for power-transformed target prediction
+
+Built a DVC pipeline with 6 stages (clean → prepare → preprocess → train → evaluate → register) with raw data versioned on AWS S3 — full pipeline reruns with dvc repro
+
+Built a FastAPI inference API serving predictions via POST /predict; containerized with Docker and deployed on AWS EC2 (t3.micro, ap-south-1) behind an Auto Scaling Group managed via Launch Template
+
+Set up a full CI/CD pipeline on GitHub Actions — on every push: DVC pull → pytest model registry check → pytest MAE gate (≤ 5 min) → MLflow stage promotion (Staging → Production) → Docker build → ECR push → CodeDeploy deployment to EC2 -->

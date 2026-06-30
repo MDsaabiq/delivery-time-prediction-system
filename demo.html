@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Delivery Time Prediction — Demo</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0d1117;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: -apple-system, "Segoe UI", system-ui, sans-serif;
+      color: #e6edf3;
+    }
+    h1 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: #e6edf3;
+    }
+    video {
+      width: 100%;
+      max-width: 900px;
+      border-radius: 8px;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+  <h1>Food Delivery Time Prediction — Demo</h1>
+  <video id="player" controls autoplay>
+    <source src="https://github.com/user-attachments/assets/b7621f64-e8e5-4409-8734-d422f413aeef" type="video/mp4">
+  </video>
+  <script>
+    const player = document.getElementById('player');
+    const videos = [
+      'https://github.com/user-attachments/assets/b7621f64-e8e5-4409-8734-d422f413aeef',
+      'https://github.com/user-attachments/assets/41f1212a-a0da-4f71-ad22-569410885f61'
+    ];
+    let current = 0;
+    player.addEventListener('ended', function () {
+      current++;
+      if (current < videos.length) {
+        player.src = videos[current];
+        player.play();
+      }
+    });
+  </script>
+</body>
+</html>
