@@ -27,7 +27,7 @@ Interactive docs at: `http://<ec2-public-ip>/docs`
 
 ## Demo
 
-[![Demo Video](https://github.com/user-attachments/assets/b80a1246-2cff-4526-a8c5-f5264b1ca65a)](https://saabiqcs.github.io/swiggy-time-prediction/demo.html)
+[![Watch Demo](https://img.shields.io/badge/▶%20Watch%20Demo-Click%20Here-red?style=for-the-badge&logo=youtube)](https://MDsaabiq.github.io/delivery-time-prediction-system/demo.html)
 
 ---
 
@@ -262,8 +262,8 @@ EC2 Instance (t3.micro, ap-south-1)
 
 **1. Clone and install**
 ```bash
-git clone https://github.com/saabiqcs/swiggy-time-prediction
-cd swiggy-time-prediction
+git clone https://github.com/MDsaabiq/delivery-time-prediction-system
+cd delivery-time-prediction-system
 pip install -r requirements.txt
 ```
 
@@ -355,7 +355,7 @@ Response: predicted delivery time in minutes (float)
 ## Author
 
 sk Saabiq — B.Tech Student  
-GitHub: [@saabiqcs](https://github.com/saabiqcs)  
+GitHub: [@MDsaabiq](https://github.com/MDsaabiq)
 DagsHub: [saabiqcs/swiggy-time-prediction](https://dagshub.com/saabiqcs/swiggy-time-prediction)
 
 
