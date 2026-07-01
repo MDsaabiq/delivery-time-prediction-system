@@ -62,14 +62,14 @@ All metrics, parameters, artifacts and experiment comparisons are tracked on Dag
 
 ### Benchmark vs IBM AutoAI
 
-To validate the model, I ran IBM AutoAI on the same cleaned dataset (`swiggy_cleaned.csv`) with MAE as the optimization metric. Here's how they compare:
+To validate the model, I ran IBM AutoAI on the same cleaned dataset (`swiggy_cleaned.csv`). IBM AutoAI only reports RMSE, so RMSE is used for this comparison:
 
-| Model | Approach | CV MAE |
+| Model | Approach | RMSE |
 |---|---|---|
-| **Stacking Regressor** (this project) | RF + LGBM → Linear meta-learner, Optuna-tuned, PowerTransformer on target | **3.160 min** |
+| **Stacking Regressor** (this project) | RF + LGBM → LinearRegression meta-learner, Optuna-tuned, PowerTransformer on target | **3.72 min** |
 | IBM AutoAI best pipeline | Ensemble Snap Random Forest (automated HPO) | 4.9 min |
 
-AutoAI's best pipeline was an automated Snap Random Forest ensemble — it achieved 4.9 min MAE without any manual feature engineering or hyperparameter tuning. The hand-crafted stacking model outperforms it by **~1.7 minutes**, validating that the deliberate model design choices (target transformation, stacking, Optuna tuning) made a meaningful difference over fully automated ML.
+AutoAI's best pipeline was an automated Snap Random Forest ensemble — it achieved 4.9 min RMSE without any manual feature engineering or hyperparameter tuning. The hand-crafted stacking model outperforms it by **~1.2 minutes RMSE**, validating that deliberate model design choices (target transformation, stacking, Optuna tuning) made a meaningful difference over fully automated ML.
 
 ---
 
